@@ -1,9 +1,7 @@
 <?php
 
-$appDir = '/app';
-$initDir = $appDir.'/init';
-$craftDir = $appDir.'/craft';
-$vendorDir = $appDir.'/vendor';
+$craftDir = 'craft';
+$vendorDir = 'vendor';
 $configDir = $craftDir.'/config';
 
 $craftEnv = getenv('CRAFT_ENVIRONMENT');
