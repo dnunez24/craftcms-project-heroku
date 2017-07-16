@@ -111,7 +111,7 @@ location ~* \.(?:ttf|ttc|otf|eot|woff|woff2)$ {
 # This is not included by default, because it'd be better if you use the build
 # script to manage the file names.
 location ~* (.+)\.(?:\d+)\.(js|css|png|jpg|jpeg|gif|webp)$ {
-	etag off;
+	  etag off;
     expires 1M;
     access_log off;
     add_header Cache-Control "public";
@@ -129,10 +129,6 @@ add_header X-Content-Type-Options "nosniff";
 # HTTP Header.  See https://content-security-policy.com/
 # Uncomment this only if you know what you're doing; it will need tweaking
 #add_header Content-Security-Policy "default-src https: data: 'unsafe-inline' 'unsafe-eval'" always;
-
-# Listen for both IPv4 & IPv6 requests on port 443 with http2 enabled
-listen 443 ssl http2;
-listen [::]:443 ssl http2;
 
 # General virtual host settings
 index index.html index.htm index.php;
@@ -158,17 +154,8 @@ location /.well-known/dnt-policy.txt {
     try_files /dnt-policy.txt /index.php?p=/dnt-policy.txt;
 }
 
-# Access and error logging
-access_log off;
-# error_log  craft/storage/runtime/log/nginx-error.log error;
-# If you want error logging to go to SYSLOG (for services like Papertrailapp.com), uncomment the following:
-#error_log syslog:server=unix:/dev/log,facility=local7,tag=nginx,severity=error;
-
 # Don't send the nginx version number in error pages and Server header
 server_tokens off;
-
-# Load configuration files from nginx-partials
-include /etc/nginx/nginx-partials/*.conf;
 
 # Root directory location handler
 location / {
@@ -185,13 +172,15 @@ location / {
 # Add a new location @XXrewrites and location /XX/ block for each language that
 # you need to support
 
-#location @enrewrites {
-#    rewrite ^/en/(.*)$ /en/index.php?p=$1? last;
-#}
-#
-#location /en/ {
-#    try_files $uri $uri/ @enrewrites;
-#}
+<?php if ($locales = getenv('CRAFT_LOCALES')) : ?>
+location @locales {
+    rewrite ^/(<?= implode('|', explode(',', $locales)); ?>)/(.*)$ /$1/index.php?p=$2? last;
+}
+
+location /(<?= implode('|', explode(',', $locales)) ?>)/ {
+    try_files $uri $uri/ @locales;
+}
+<?php endif; ?>
 
 # Craft-specific location handlers to ensure AdminCP requests route through index.php
 # If you change your `cpTrigger`, change it here as well
@@ -201,41 +190,3 @@ location ^~ /admin {
 location ^~ /cpresources {
     try_files $uri $uri/ /index.php?$query_string;
 }
-
-# php-fpm configuration
-location ~ [^/]\.php(/|$) {
-    try_files $uri $uri/ /index.php?$query_string;
-    fastcgi_split_path_info ^(.+\.php)(/.+)$;
-    fastcgi_pass unix:/var/run/php/php7.0-fpm.sock;
-    fastcgi_index index.php;
-    include fastcgi_params;
-    fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
-    fastcgi_param PATH_INFO $fastcgi_path_info;
-    fastcgi_param HTTP_PROXY "";
-
-    fastcgi_intercept_errors off;
-    fastcgi_buffer_size 16k;
-    fastcgi_buffers 4 16k;
-    fastcgi_connect_timeout 300;
-    fastcgi_send_timeout 300;
-    fastcgi_read_timeout 300;
-}
-
-# SSL/TLS configuration, with TLS1 disabled
-ssl_protocols TLSv1.2 TLSv1.1;
-ssl_prefer_server_ciphers on;
-ssl_dhparam /etc/ssl/certs/dhparam.pem;
-ssl_ciphers "EECDH+ECDSA+AESGCM EECDH+aRSA+AESGCM EECDH+ECDSA+SHA384 EECDH+ECDSA+SHA256 EECDH+aRSA+SHA384 EECDH+aRSA+SHA256 EECDH+aRSA+RC4 EECDH EDH+aRSA RC4 !aNULL !eNULL !LOW !3DES !MD5 !EXP !PSK !SRP !DSS !RC4";
-ssl_session_timeout 30m;
-ssl_session_cache shared:SSL:50m;
-ssl_stapling on;
-ssl_stapling_verify on;
-
-# Disable reading of Apache .htaccess files
-location ~ /\.ht {
-    deny all;
-}
-
-# Misc settings
-sendfile off;
-client_max_body_size 100m;
