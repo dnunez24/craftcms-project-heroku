@@ -15,7 +15,7 @@ if ($licenseKey) {
 }
 
 $dbUrl = getenv('JAWSDB_MARIA_URL');
-$db    = parse_url($mysqlUrl);
+$db    = parse_url($dbUrl);
 
 $redisUrl = getenv('REDIS_URL');
 $redis = parse_url($redisUrl);
