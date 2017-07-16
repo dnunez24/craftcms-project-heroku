@@ -1,5 +1,9 @@
 {
     "private": "true",
+    "engines": {
+        "node": "^6.0",
+        "npm": "^5.0"
+    },
     "scripts": {
         "lint:js": "eslint src",
         "test": "echo \"Error: no test specified\" && exit 1",
@@ -9,7 +13,8 @@
         "watch-poll": "npm run watch -- --watch-poll",
         "hot": "cross-env NODE_ENV=development node_modules/webpack-dev-server/bin/webpack-dev-server.js --inline --hot --config=node_modules/laravel-mix/setup/webpack.config.js",
         "prod": "npm run production",
-        "production": "cross-env NODE_ENV=production node_modules/webpack/bin/webpack.js --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js"
+        "production": "cross-env NODE_ENV=production node_modules/webpack/bin/webpack.js --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
+        "heroku-postbuild": "npm run production"
     },
     "devDependencies": {
         "browser-sync": "^2.18.12",
@@ -22,7 +27,7 @@
         "eslint-plugin-jsx-a11y": "^4.0.0",
         "eslint-plugin-react": "^6.10.3",
         "laravel-mix": "^1.0.0",
-        "purify-css": "^1.2.5",
+        "purify-css": "^1.2.6",
         "purifycss-webpack": "^0.7.0",
         "stylelint": "^7.10.1",
         "stylelint-config-dnunez24": "^0.1.0"
