@@ -1,0 +1,84 @@
+{
+    "name": "CraftCMS",
+    "description": "CraftCMS",
+    "repository": "https://github.com/dnunez24/craftcms-project-heroku",
+    "success_url": "/",
+    "keywords": [
+        "craftcms",
+        "craft cms",
+        "craft",
+        "cms"
+    ],
+    "scripts": {
+        "postdeploy": "bin/craft install"
+    },
+    "env": {
+        "BASE_URL": {
+            "description": "Base URL for the website",
+            "required": true
+        },
+        "CACHE_HOST": {
+            "description": "Hostname for the cache storage backend",
+            "required": true
+        },
+        "CACHE_PORT": {
+            "description": "Port for the cache storage backend",
+            "required": true
+        },
+        "DB_DRIVER": {
+            "description": "Database driver that CraftCMS should use",
+            "required": true,
+            "value": "mysql"
+        },
+        "DB_SERVER": {
+            "description": "Hostname for the database",
+            "required": true
+        },
+        "DB_DATABASE": {
+            "description": "Name of the database",
+            "required": true
+        },
+        "DB_USER": {
+            "description": "User for the database",
+            "required": true
+        },
+        "DB_PASSWORD": {
+            "description": "Password for the database user",
+            "required": true
+        },
+        "DB_PORT": {
+            "description": "Port for the database",
+            "required": true,
+            "value": 3306
+        },
+        "SESSION_LOCATION": {
+            "description": "Location to connect for session data",
+            "required": true
+        }
+    },
+    "formation": {
+        "web": {
+            "quantity": 1,
+            "size": "free"
+        }
+    },
+    "stack": "cedar-16",
+    "image": "heroku/php",
+    "addons": [{
+        "plan": "heroku-redis:hobby-dev"
+    }, {
+        "plan": "jawsdb-maria:kitefin"
+    }, {
+        "plan": "sendgrid:starter"
+    }, {
+        "plan": "newrelic:wayne"
+    }, {
+        "plan": "papertrail:choklad"
+    }],
+    "buildpacks": [{
+        "url": "heroku/php"
+    }, {
+        "url": "heroku/nodejs"
+    }],
+    "environments": {}
+}

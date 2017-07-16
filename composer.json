@@ -1,0 +1,74 @@
+{
+    "name": "dnunez24/craftcms-project",
+    "description": "Craft CMS project starter",
+    "license": "MIT",
+    "type": "project",
+    "minimum-stability": "stable",
+    "require": {
+        "php": "~7.1.0",
+        "ext-imagick": "*",
+        "ext-mbstring": "*",
+        "ext-mcrypt": "*",
+        "ext-redis": "*",
+        "boboldehampsink/import": "^0.8",
+        "boboldehampsink/export": "^0.5",
+        "craftcms/cms": "^2.6.2986",
+        "craft-cli/cli": "^0.13",
+        "crodas/text-rank": "@dev",
+        "dnunez24/craft-laravel-mix": "^0.1",
+        "nerds-and-company/loghelper": "^2.0.3",
+        "nerds-and-company/schematic": "^3.8",
+        "nystudio107/retour": "^1.0",
+        "nystudio107/seomatic": "^1.1"
+    },
+    "require-dev": {
+        "heroku/heroku-buildpack-php": "*",
+        "squizlabs/php_codesniffer": "^2.8",
+        "phpmd/phpmd": "^2.6"
+    },
+    "repositories": [{
+        "type": "vcs",
+        "url": "https://github.com/pixelandtonic/Twig"
+    }, {
+        "type": "vcs",
+        "url": "https://github.com/pixelandtonic/guzzle3"
+    }, {
+        "type": "vcs",
+        "url": "https://github.com/pixelandtonic/simplepie"
+    }, {
+        "type": "vcs",
+        "url": "https://github.com/pixelandtonic/pel"
+    }, {
+        "type": "vcs",
+        "url": "https://github.com/pixelandtonic/yii"
+    }],
+    "autoload": {
+        "classmap": [
+            "scripts/composer/ScriptHandler.php",
+            "vendor/craftcms/cms/src/"
+        ]
+    },
+    "config": {
+        "bin-dir": "bin"
+    },
+    "scripts": {
+        "post-install-cmd": [
+            "Dnunez24\\Composer\\ScriptHandler::remapCraftPlugins"
+        ],
+        "post-update-cmd": [
+            "Dnunez24\\Composer\\ScriptHandler::remapCraftPlugins"
+        ],
+        "compile": [
+            "php scripts/heroku/compile.php",
+            "npm run production"
+        ]
+    },
+    "extra": {
+        "craft-plugins-path": "craft/plugins",
+        "installer-paths": {
+            "craft/plugins/mix": [
+                "dnunez24/craft-laravel-mix"
+            ]
+        }
+    }
+}

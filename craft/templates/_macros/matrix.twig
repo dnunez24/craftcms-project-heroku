@@ -1,0 +1,124 @@
+{#
+Import these macros into your template
+
+```
+{% import '_macros/matrix.twig' %}
+```
+
+then use a macro
+
+```
+{% for content in entry.contentBuilder %}
+    {% if content.type is 'mediaObject' %}
+        {% media_object(content.mediaObject) %}
+    {% endif %}
+{% endfor %}
+```
+#}
+
+{#
+
+- Media Object -
+
+Builds a media object from a Craft matrix field that contains
+
+@param block - a matrix field block of type 'mediaObject'
+    image - an image asset field
+    heading - a plain text field
+    body - a rich text editor field
+#}
+{% macro mediaobj(block) %}
+    {% set thumb = block.image.setTransform('thumbnail') %}
+
+    <div class="media-object">
+        <div class="media-object__section">
+            <div class="media-object__thumbnail">
+                {{ thumb.getImg() }}
+            </div>
+        </div>
+        <div class="media-object__section">
+            <h4>{{ block.heading }}</h4>
+            {{ block.body }}
+        </div>
+    </div>
+{% endmacro %}
+
+{#
+
+- Hero Banner -
+
+Full width banner element to feature content
+
+@param block A matrix field block of type 'hero'
+
+#}
+{% macro hero(block) %}
+    <div class="hero">
+        <img
+            src="{{ block.image.src }}"
+            alt="{{ block.image.alt }}"
+            width="{{ block.image.width }}"
+            height="{{ block.image.height }}"
+            class="hero__image"
+        >
+        <h1 class="hero__heading">{{ block.heading }}</h1>
+        <p class="hero__body">{{ block.body }}</p>
+        <a href="{{ block.ctaUrl }}" class="button--primary">{{ block.ctaText }}</a>
+    </div>
+{% endmacro %}
+
+{#
+
+- Callout -
+
+#}
+{% macro callout(content) %}
+    <div class="callout--{{ content.bgColor }}">
+      <h5 class="callout__heading">{{ content.heading }}</h5>
+      {{ content.body }}
+      <a href="{{ content.ctaUrl }}" class="callout__link">{{ content.ctaText }}</a>
+    </div>
+{% endmacro %}
+
+{#
+
+- Block Quote -
+
+#}
+{% macro quote(block) %}
+<blockquote {% if block.cite %}cite="{{ block.cite }}"{% endif %} class="quote">
+    {{ block.quote }}
+    {% if block.cite %}
+    <cite>{{ block.cite }}</cite>
+    {% endif %}
+</blockquote>
+{% endmacro %}
+
+{#
+
+- Text Block -
+
+#}
+{% macro text(block) %}
+<div class="text-block">
+  {% if block.heading %}
+    <h4 class="text-block__heading">{{ block.heading }}</h4>
+  {% endif %}
+  {{ block.body }}
+</div>
+{% endmacro %}
+
+{#
+    Image Block
+
+    Creates a
+#}
+{% macro image(image, alignment = 'center') %}
+    <img
+        src="{{ image.src }}"
+        alt="{{ image.alt }}"
+        width="{{ image.width }}"
+        height="{{ image.height }}"
+        class="cms-image--{{ alignment }}"
+    >
+{% endmacro %}

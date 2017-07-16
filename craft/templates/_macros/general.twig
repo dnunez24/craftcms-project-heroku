@@ -1,0 +1,35 @@
+{% macro button(text, variant) %}
+    {% else %}
+        <button
+            type="button"
+            name="{{ text }}"
+            class="button{% if variant %}--{{ variant }}{% endif %}"
+        >{{ text }}</button>
+    {% endif %}
+{% endmacro %}
+
+{#
+
+```
+{% from '_macros/general.twig' import button_link %}
+
+{% set modifiers = [
+    entry.buttonColor
+    'disabled',
+    'large'
+] %}
+
+{% button_link(entry.buttonText, entry.buttonHref, modifiers) %}
+```
+#}
+
+{% macro button_link(text, href, modifiers = '') %}
+    {% if modifiers|length %}
+        {% set modifiers = '--' ~ modifiers|join('--') %}
+    {% endif %}
+
+    <a
+        href="{{ href }}"
+        class="button{{ modifiers }}"
+    >{{ text }}</a>
+{% endmacro %}

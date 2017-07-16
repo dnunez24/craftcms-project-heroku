@@ -1,0 +1,28 @@
+{% extends "_layouts/_default" %}
+
+{% block content %}
+	<h1>{{ entry.title }}</h1>
+
+	{{ entry.body }}
+
+    {% set lazyImage = false %}
+    {% for block in entry.contentModules %}
+        {% include ('_partials/_' ~ blockPrefix ~ 'block_' ~ block.type.handle) %}
+        {% if block.type.handle == "image" %}
+            {% set lazyImage = true %}
+        {% endif %}
+    {% endfor %}
+
+    {# {{ import '_macros/modules.twig' as modules }} #}
+    {# {% if entry.contentBuilder | length %} #}
+        {# {% for content in entry.contentModules %} #}
+            {# {% include ('blog/_partials/_' ~ blockPrefix ~ 'block_' ~ block.type.handle) %} #}
+            {# {% switch content.type %} #}
+                {# {% case 'copy' %} #}
+                {# {{ modules.copy content.title }} #}
+                {# {{ attribute(modules, content.type, [content.name, content.value, content.atts]) }} #}
+            {# {% endswitch %} #}
+        {# {% endfor %} #}
+    {# {% endif %} #}
+
+{% endblock %}

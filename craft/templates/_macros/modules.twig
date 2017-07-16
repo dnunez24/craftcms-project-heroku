@@ -1,0 +1,4 @@
+{% macro image(content) %}
+    <img src="{{content.src}}" alt="{{content.alt}}">
+    <input type="{{ type|default('text') }}" name="{{ name }}" value="{{ value|e }}" size="{{ size|default(20) }}" />
+{% endmacro %}
