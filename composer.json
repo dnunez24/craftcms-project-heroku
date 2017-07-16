@@ -59,7 +59,7 @@
             "Dnunez24\\Composer\\ScriptHandler::remapCraftPlugins"
         ],
         "compile": [
-            "php scripts/heroku/compile.php",
+            "php -f scripts/heroku/compile.php",
             "npm run production"
         ]
     },
