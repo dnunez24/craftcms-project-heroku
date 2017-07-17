@@ -9,5 +9,8 @@ hot
 node_modules/
 mix-manifest.json
 mix*.js*
-/public/assets/
+/public/fonts/
+/public/images/
+/public/scripts/
+/public/styles/
 vendor/
