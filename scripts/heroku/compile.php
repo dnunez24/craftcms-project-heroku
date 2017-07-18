@@ -4,6 +4,7 @@ $craftDir = 'craft';
 $vendorDir = 'vendor';
 $configDir = $craftDir.'/config';
 
+$appId = getenv('CRAFT_APP_ID');
 $craftEnv = getenv('CRAFT_ENVIRONMENT');
 $licenseKey = getenv('CRAFT_LICENSE_KEY');
 $licenseFile = "{$configDir}/license.key";
@@ -16,9 +17,8 @@ if ($licenseKey) {
 
 $dbUrl = getenv('JAWSDB_MARIA_URL');
 $db    = parse_url($dbUrl);
-
 $redisUrl = getenv('REDIS_URL');
-$redis = parse_url($redisUrl);
+$redis    = parse_url($redisUrl);
 
 // Get service properties
 $redisHost      = $redis['host'];
@@ -31,7 +31,7 @@ $dbUser         = $db['user'];
 $dbPort         = $db['port'];
 
 $devMode = $craftEnv !== 'production';
-$overrideSessionLocation = "tcp://{$redisHost}:{$redisPort}?auth={$redisPassword}";
+$overrideSession = "tcp://{$redisHost}:{$redisPort}?auth={$redisPassword}";
 
 function reconfigure($name, $confDir, $conf)
 {
@@ -51,7 +51,7 @@ function reconfigure($name, $confDir, $conf)
 }
 
 reconfigure('general', $configDir, [
-    'appId' => $appName,
+    'appId' => $appId,
     'devMode' => $devMode,
     'overridePhpSessionLocation' => $overrideSession,
     'siteUrl' => $siteUrl,
