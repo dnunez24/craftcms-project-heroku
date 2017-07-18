@@ -46,7 +46,7 @@
             "size": "free"
         }
     },
-    "stack": "cedar-16",
+    "stack": "heroku-16",
     "image": "heroku/php",
     "addons": [{
         "plan": "heroku-redis:hobby-dev"
