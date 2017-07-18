@@ -10,50 +10,34 @@
         "cms"
     ],
     "scripts": {
-        "postdeploy": "bin/craft install"
+        "postdeploy": "bin/schematic import"
     },
     "env": {
-        "BASE_URL": {
-            "description": "Base URL for the website",
+        "CRAFT_USERNAME": {
+            "description": "Admin username",
             "required": true
         },
-        "CACHE_HOST": {
-            "description": "Hostname for the cache storage backend",
+        "CRAFT_EMAIL": {
+            "description": "Admin user email",
             "required": true
         },
-        "CACHE_PORT": {
-            "description": "Port for the cache storage backend",
-            "required": true
-        },
-        "DB_DRIVER": {
-            "description": "Database driver that CraftCMS should use",
+        "CRAFT_PASSWORD": {
+            "description": "Admin user password",
             "required": true,
-            "value": "mysql"
+            "generator": "secret"
         },
-        "DB_SERVER": {
-            "description": "Hostname for the database",
+        "CRAFT_SITENAME": {
+            "description": "Human friendly name for the site",
             "required": true
         },
-        "DB_DATABASE": {
-            "description": "Name of the database",
+        "CRAFT_SITEURL": {
+            "description": "Base URL for the website (must match Heroku app URL)",
             "required": true
         },
-        "DB_USER": {
-            "description": "User for the database",
-            "required": true
-        },
-        "DB_PASSWORD": {
-            "description": "Password for the database user",
-            "required": true
-        },
-        "DB_PORT": {
-            "description": "Port for the database",
+        "CRAFT_LOCALE": {
+            "description": "Default locale for the admin panel",
             "required": true,
-            "value": 3306
-        },
-        "SESSION_LOCATION": {
-            "description": "Location to connect for session data",
-            "required": true
+            "value": "en_US"
         }
     },
     "formation": {
