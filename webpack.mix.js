@@ -11,8 +11,11 @@ mix.setPublicPath('public')
   .js('src/assets/scripts/main.js', 'public/scripts')
   .sourceMaps()
   .copy('src/assets/fonts', 'public/fonts')
-  .copy('src/assets/images', 'public/images')
-  .browserSync(process.env.CRAFT_SITE_URL);
+  .copy('src/assets/images', 'public/images');
+
+if (!mix.inProduction()) {
+  mix.browserSync(process.env.CRAFT_SITEURL);
+}
 
 if (mix.inProduction()) {
   mix.version();
