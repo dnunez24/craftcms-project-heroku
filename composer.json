@@ -10,6 +10,7 @@
         "ext-mbstring": "*",
         "ext-mcrypt": "*",
         "ext-redis": "*",
+        "am-impact/amcommand": "^2.1.1",
         "boboldehampsink/import": "^0.8",
         "boboldehampsink/export": "^0.5",
         "craftcms/cms": "^2.6.2986",
