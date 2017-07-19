@@ -60,7 +60,8 @@
             "Dnunez24\\Composer\\ScriptHandler::remapCraftPlugins"
         ],
         "compile": [
-            "php -f scripts/heroku/compile.php"
+            "php -f scripts/heroku/compile.php",
+            "chmod 775 craft/storage/"
         ]
     },
     "extra": {
