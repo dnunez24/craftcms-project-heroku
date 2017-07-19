@@ -26,6 +26,11 @@
             "description": "Admin user password",
             "required": true
         },
+        "CRAFT_ENVIRONMENT": {
+            "description": "Set the name of the environment",
+            "required": true,
+            "value": "production"
+        },
         "CRAFT_SITENAME": {
             "description": "Human friendly name for the site",
             "required": true
