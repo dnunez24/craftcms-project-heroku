@@ -1,0 +1,194 @@
+locales:
+  - en_us
+assetSources: {  }
+assetTransforms: {  }
+fields:
+  Default:
+    body:
+      name: Body
+      required: false
+      instructions: null
+      translatable: '1'
+      type: RichText
+      settings:
+        configFile: Standard.json
+        columnType: text
+      context: global
+    image:
+      name: Image
+      required: false
+      instructions: ''
+      translatable: '0'
+      type: Assets
+      settings:
+        useSingleFolder: '1'
+        sources: '*'
+        defaultUploadLocationSource: images
+        defaultUploadLocationSubpath: ''
+        singleUploadLocationSource: images
+        singleUploadLocationSubpath: ''
+        restrictFiles: ''
+        targetLocale: ''
+        limit: '1'
+        viewMode: large
+        selectionLabel: 'Add an image'
+      context: global
+    seomatic:
+      name: SEOmatic
+      required: false
+      instructions: ''
+      translatable: '0'
+      type: Seomatic_Meta
+      settings:
+        assetSources: '*'
+        seoMainEntityCategory: CreativeWork
+        seoMainEntityOfPage: WebPage
+        seoTitleSource: field
+        seoTitleSourceField: title
+        seoTitle: ''
+        seoTitleSourceChangeable: '1'
+        seoDescriptionSource: custom
+        seoDescriptionSourceField: title
+        seoDescription: ''
+        seoDescriptionSourceChangeable: '1'
+        seoKeywordsSource: custom
+        seoKeywordsSourceField: title
+        seoKeywords: ''
+        seoKeywordsSourceChangeable: '1'
+        seoImageIdSource: custom
+        seoImageIdSourceField: image
+        seoImageIdSourceChangeable: '1'
+        seoImageTransform: ''
+        twitterCardType: ''
+        twitterCardTypeChangeable: '1'
+        seoTwitterImageIdSource: custom
+        seoTwitterImageIdSourceField: image
+        seoTwitterImageIdSourceChangeable: '1'
+        seoTwitterImageTransform: ''
+        openGraphType: ''
+        openGraphTypeChangeable: '1'
+        seoFacebookImageIdSource: custom
+        seoFacebookImageIdSourceField: image
+        seoFacebookImageIdSourceChangeable: '1'
+        seoFacebookImageTransform: ''
+        robots: ''
+        robotsChangeable: '1'
+      context: global
+    tags:
+      name: Tags
+      required: false
+      instructions: null
+      translatable: '0'
+      type: Tags
+      settings:
+        source: 'taggroup:default'
+      context: global
+globalSets: {  }
+plugins:
+  AmCommand:
+    isInstalled: false
+    isEnabled: false
+    settings:
+      theme: ''
+      elementSearchElementTypes: null
+  Export:
+    isInstalled: false
+    isEnabled: false
+    settings: {  }
+  Import:
+    isInstalled: false
+    isEnabled: false
+    settings: {  }
+  Mix:
+    isInstalled: true
+    isEnabled: true
+    settings: {  }
+  Retour:
+    isInstalled: true
+    isEnabled: true
+    settings:
+      pluginNameOverride: null
+  Seomatic:
+    isInstalled: true
+    isEnabled: true
+    settings:
+      pluginNameOverride: null
+sections:
+  homepage:
+    name: Homepage
+    type: single
+    hasUrls: '1'
+    template: index
+    maxLevels: null
+    enableVersioning: '1'
+    locales:
+      en:
+        enabledByDefault: '1'
+        urlFormat: __home__
+        nestedUrlFormat: null
+      en_au:
+        enabledByDefault: '1'
+        urlFormat: __home__
+        nestedUrlFormat: null
+      en_ca:
+        enabledByDefault: '1'
+        urlFormat: __home__
+        nestedUrlFormat: null
+    entryTypes:
+      homepage:
+        name: Homepage
+        hasTitleField: '1'
+        titleLabel: Title
+        titleFormat: null
+        fieldLayout:
+          tabs:
+            Content:
+              body: '1'
+              image: '0'
+            SEO:
+              seomatic: '0'
+  news:
+    name: News
+    type: channel
+    hasUrls: '1'
+    template: news/_entry
+    maxLevels: null
+    enableVersioning: '1'
+    locales:
+      en:
+        enabledByDefault: '1'
+        urlFormat: 'news/{slug}'
+        nestedUrlFormat: null
+      en_au:
+        enabledByDefault: '1'
+        urlFormat: 'news/{slug}'
+        nestedUrlFormat: null
+      en_gb:
+        enabledByDefault: '1'
+        urlFormat: 'news/{slug}'
+        nestedUrlFormat: null
+    entryTypes:
+      news:
+        name: News
+        hasTitleField: '1'
+        titleLabel: Title
+        titleFormat: null
+        fieldLayout:
+          tabs:
+            Content:
+              body: '1'
+              tags: '0'
+            SEO:
+              seomatic: '0'
+userGroups: {  }
+users:
+  fieldLayout:
+    fields: {  }
+elementIndexSettings: {  }
+pluginData: {  }
+categoryGroups: {  }
+tagGroups:
+  default:
+    name: Default
+    fieldLayout:
+      fields: {  }
