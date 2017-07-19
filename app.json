@@ -23,8 +23,7 @@
         },
         "CRAFT_PASSWORD": {
             "description": "Admin user password",
-            "required": true,
-            "generator": "secret"
+            "required": true
         },
         "CRAFT_SITENAME": {
             "description": "Human friendly name for the site",
