@@ -61,7 +61,8 @@
         ],
         "compile": [
             "php -f scripts/heroku/compile.php",
-            "chmod 775 craft/storage/"
+            "chmod g+ws craft/storage/",
+            "chmod g+ws craft/config/"
         ]
     },
     "extra": {
