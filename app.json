@@ -38,6 +38,51 @@
             "description": "Default locale for the admin panel",
             "required": true,
             "value": "en_US"
+        },
+        "CRAFT_APP_PATH": {
+            "description": "Path to Craft app directory",
+            "required": true,
+            "value": "/app/vendor/craftcms/cms/src/"
+        },
+        "CRAFT_BASE_PATH": {
+            "description": "Path to the Craft base directory",
+            "required": true,
+            "value": "/app/craft/"
+        },
+        "CRAFT_CONFIG_PATH": {
+            "description": "Path to Craft config files",
+            "required": true,
+            "value": "/app/craft/config/"
+        },
+        "CRAFT_FRAMEWORK_PATH": {
+            "description": "Path to Yii framework directory",
+            "required": true,
+            "value": "/app/vendor/yiisoft/yii/framework/"
+        },
+        "CRAFT_PLUGINS_PATH": {
+            "description": "Path to Craft plugins directory",
+            "required": true,
+            "value": "/app/craft/plugins/"
+        },
+        "CRAFT_STORAGE_PATH": {
+            "description": "Path to Craft storage directory",
+            "required": true,
+            "value": "/app/craft/storage/"
+        },
+        "CRAFT_TEMPLATES_PATH": {
+            "description": "Path to Craft templates directory",
+            "required": true,
+            "value": "/app/craft/templates/"
+        },
+        "CRAFT_TRANSLATIONS_PATH": {
+            "description": "Path to Craft translations directory",
+            "required": true,
+            "value": "/app/craft/translations/"
+        },
+        "CRAFT_VENDOR_PATH": {
+            "description": "Path to vendor directory",
+            "required": true,
+            "value": "/app/vendor/"
         }
     },
     "formation": {
