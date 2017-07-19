@@ -1,31 +1,25 @@
 <!DOCTYPE html>
 <html lang="{{ craft.locale | default('en') }}">
-<head>
-	<meta charset="utf-8" />
-    <meta http-equiv="x-ua-compatible" content="ie=edge">
-	<title>{{ metaTitlePrefix }}{{ metaTitle ?: entry.title }}{{ metaTitleSuffix }}</title>
-    {% if entry.metaDescription is defined %}
-    <meta name="description" content="{{ entry.metaDescription }}">
-    {% endif %}
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="apple-touch-icon" href="apple-touch-icon.png">
-	<link rel="home" href="{{ siteUrl }}" />
-    {% includeCssResource 'assets/styles/main.css' %}
-    {{ getHeadHtml() }}
-</head>
-<body>
-    <!--[if lte IE 9]>
-    <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
-    <![endif]-->
-	<div id="container">
-        {% include '_partials/_header' %}
+    <head>
+        <meta charset="utf-8"/>
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="apple-touch-icon" href="apple-touch-icon.png">
+        <link rel="home" href="{{ siteUrl }}"/>
+        {% seomaticRender %}
+        {% mix('styles/main.css') %}
+        {{ getHeadHtml() }}
+    </head>
+    <body>
+        <!--[if lte IE 9]> <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p> <![endif]-->
+        <div id="container">
+            {% include '_partials/_header' %}
 
-		<main id="content" role="main">
-			{% block content %}
-			{% endblock %}
-		</main>
+            <main id="content" role="main">
+                {% block content %}{% endblock %}
+            </main>
 
-        {% include '_partials/_footer' %}
-	</div>
-</body>
+            {% include '_partials/footer' %}
+        </div>
+    </body>
 </html>

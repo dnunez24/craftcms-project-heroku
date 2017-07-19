@@ -1,14 +1,4 @@
-<footer class="Footer">
-    {% if copyright %}
-    <span class="Footer__Copyright">{{ copyright }}</span>
-    {% endif %}
+<footer class="footer">
 </footer>
-{% includeJsFile "/assets/js/main.js" %}
+{% mix('scripts/main.js') %}
 {{ getFootHtml() }}
-{% if googleAnalyticsId %}
-<script>
-    window.ga=function(){ga.q.push(arguments)};ga.q=[];ga.l=+new Date;
-    ga('create','{{ googleAnalyticsId }}','auto');ga('send','pageview')
-</script>
-<script src="https://www.google-analytics.com/analytics.js" async defer></script>
-{% endif %}
