@@ -1,6 +1,7 @@
 {
     "name": "CraftCMS",
     "description": "CraftCMS",
+    "website": "https://craftcms.com/",
     "repository": "https://github.com/dnunez24/craftcms-project-heroku",
     "success_url": "/",
     "keywords": [
@@ -10,7 +11,7 @@
         "cms"
     ],
     "scripts": {
-        "postdeploy": "bin/schematic import"
+        "postdeploy": "bin/schematic import --force"
     },
     "env": {
         "CRAFT_USERNAME": {
