@@ -1,5 +1,6 @@
 <?php
 
+$appDir = getenv('HEROKU_APP_DIR');
 $craftDir = 'craft';
 $vendorDir = 'vendor';
 $configDir = $craftDir.'/config';
@@ -8,7 +9,7 @@ $appId = getenv('CRAFT_APP_ID');
 $craftEnv = getenv('CRAFT_ENVIRONMENT');
 $licenseKey = getenv('CRAFT_LICENSE_KEY');
 $licenseFile = "{$configDir}/license.key";
-$siteUrl = getenv('CRAFT_SITE_URL');
+$siteUrl = getenv('CRAFT_SITEURL');
 $validationKey = getenv('CRAFT_VALIDATION_KEY');
 
 if ($licenseKey) {
