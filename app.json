@@ -39,6 +39,16 @@
             "required": true,
             "value": "en_US"
         },
+        "CRAFT_APP_ID": {
+            "description": "Craft app ID used for cache, session, etc.",
+            "required": true,
+            "value": "craftcms"
+        },
+        "CRAFT_VALIDATION_KEY": {
+            "description": "",
+            "required": true,
+            "generator": "secret"
+        },
         "CRAFT_APP_PATH": {
             "description": "Path to Craft app directory",
             "required": true,
