@@ -1,0 +1,6 @@
+*
+!craft
+!composer.*
+!public
+!scripts
+!src
