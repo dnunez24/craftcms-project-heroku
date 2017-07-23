@@ -26,35 +26,59 @@ fields:
 globalSets: {  }
 plugins:
   AmCommand:
-    isInstalled: false
-    isEnabled: false
+    isInstalled: true
+    isEnabled: true
     settings:
       theme: ''
-      elementSearchElementTypes: null
+      elementSearchElementTypes:
+        Asset:
+          elementType: Asset
+          enabled: '1'
+        Category:
+          elementType: Category
+          enabled: '1'
+        Entry:
+          elementType: Entry
+          enabled: '1'
+        GlobalSet:
+          elementType: GlobalSet
+          enabled: '1'
+        MatrixBlock:
+          elementType: MatrixBlock
+          enabled: '1'
+        Seomatic_Meta:
+          elementType: Seomatic_Meta
+          enabled: '1'
+        Tag:
+          elementType: Tag
+          enabled: '1'
+        User:
+          elementType: User
+          enabled: '1'
   Export:
-    isInstalled: false
-    isEnabled: false
+    isInstalled: true
+    isEnabled: true
     settings: {  }
   Import:
-    isInstalled: false
-    isEnabled: false
+    isInstalled: true
+    isEnabled: true
     settings: {  }
   LogHelper:
-    isInstalled: false
-    isEnabled: false
+    isInstalled: true
+    isEnabled: true
     settings: {  }
   Mix:
-    isInstalled: false
-    isEnabled: false
+    isInstalled: true
+    isEnabled: true
     settings: {  }
   Retour:
-    isInstalled: false
-    isEnabled: false
+    isInstalled: true
+    isEnabled: true
     settings:
       pluginNameOverride: null
   Seomatic:
-    isInstalled: false
-    isEnabled: false
+    isInstalled: true
+    isEnabled: true
     settings:
       pluginNameOverride: null
 sections:
