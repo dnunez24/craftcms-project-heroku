@@ -2,7 +2,7 @@ FROM php:7.1.3-fpm-alpine
 MAINTAINER David Nuñez <dnunez24@gmail.com>
 
 ENV COMPOSER_HOME /var/www/html/.composer
-ENV LIBICONV_GPG_KEY 4F494A942E4616C2
+ENV LD_PRELOAD /usr/lib/preloadable_libiconv.so php
 
 RUN apk add --no-cache --virtual .build-deps \
     autoconf \
@@ -23,18 +23,12 @@ RUN apk add --no-cache --virtual .build-deps \
     libxml2 \
     libtool
 
-RUN curl -fsSLO 'https://ftp.gnu.org/pub/gnu/libiconv/libiconv-1.15.tar.gz' \
-  && curl -fsSLO 'https://ftp.gnu.org/pub/gnu/libiconv/libiconv-1.15.tar.gz.sig' \
-  && gpg --keyserver pgp.mit.edu --recv-key $LIBICONV_GPG_KEY \
-  && gpg --verify libiconv-1.15.tar.gz.sig \
-  && tar xzf libiconv-1.15.tar.gz \
-  && cd libiconv-1.15 \
-  && ./configure --prefix=/usr/local \
-  && make && make install \
-  && cd .. && rm -rf libiconv-1.15*
+RUN apk add \
+    --no-cache \
+    --repository http://dl-3.alpinelinux.org/alpine/edge/testing \
+    gnu-libiconv
 
 RUN NPROC=$(getconf _NPROCESSORS_ONLN) \
-  && docker-php-ext-configure iconv --with-iconv=/usr/local \
   && docker-php-ext-install -j$NPROC \
     dom \
     iconv \
