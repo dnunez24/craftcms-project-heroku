@@ -45,15 +45,14 @@ services:
     volumes:
       - redis:/data
 
-  node:
+  npm:
+    build:
+      context: .docker/npm
     env_file: .env
-    image: node:6-alpine
     networks:
       private:
     volumes:
       - .:/usr/src/app
-    working_dir: /usr/src/app
-    command: ["npm", "run", "dev"]
 
 networks:
   public:
