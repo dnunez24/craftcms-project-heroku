@@ -1,4 +1,5 @@
-locales: { }
+locales:
+  - en_us
 assetSources: {  }
 assetTransforms: {  }
 fields:
@@ -12,66 +13,6 @@ fields:
       settings:
         configFile: Standard.json
         columnType: text
-      context: global
-    image:
-      name: Image
-      required: false
-      instructions: ''
-      translatable: '0'
-      type: Assets
-      settings:
-        useSingleFolder: '1'
-        sources: '*'
-        defaultUploadLocationSource: images
-        defaultUploadLocationSubpath: ''
-        singleUploadLocationSource: images
-        singleUploadLocationSubpath: ''
-        restrictFiles: ''
-        targetLocale: ''
-        limit: '1'
-        viewMode: large
-        selectionLabel: 'Add an image'
-      context: global
-    seomatic:
-      name: SEOmatic
-      required: false
-      instructions: ''
-      translatable: '0'
-      type: Seomatic_Meta
-      settings:
-        assetSources: '*'
-        seoMainEntityCategory: CreativeWork
-        seoMainEntityOfPage: WebPage
-        seoTitleSource: field
-        seoTitleSourceField: title
-        seoTitle: ''
-        seoTitleSourceChangeable: '1'
-        seoDescriptionSource: custom
-        seoDescriptionSourceField: title
-        seoDescription: ''
-        seoDescriptionSourceChangeable: '1'
-        seoKeywordsSource: custom
-        seoKeywordsSourceField: title
-        seoKeywords: ''
-        seoKeywordsSourceChangeable: '1'
-        seoImageIdSource: custom
-        seoImageIdSourceField: image
-        seoImageIdSourceChangeable: '1'
-        seoImageTransform: ''
-        twitterCardType: ''
-        twitterCardTypeChangeable: '1'
-        seoTwitterImageIdSource: custom
-        seoTwitterImageIdSourceField: image
-        seoTwitterImageIdSourceChangeable: '1'
-        seoTwitterImageTransform: ''
-        openGraphType: ''
-        openGraphTypeChangeable: '1'
-        seoFacebookImageIdSource: custom
-        seoFacebookImageIdSourceField: image
-        seoFacebookImageIdSourceChangeable: '1'
-        seoFacebookImageTransform: ''
-        robots: ''
-        robotsChangeable: '1'
       context: global
     tags:
       name: Tags
@@ -98,18 +39,22 @@ plugins:
     isInstalled: false
     isEnabled: false
     settings: {  }
+  LogHelper:
+    isInstalled: false
+    isEnabled: false
+    settings: {  }
   Mix:
-    isInstalled: true
-    isEnabled: true
+    isInstalled: false
+    isEnabled: false
     settings: {  }
   Retour:
-    isInstalled: true
-    isEnabled: true
+    isInstalled: false
+    isEnabled: false
     settings:
       pluginNameOverride: null
   Seomatic:
-    isInstalled: true
-    isEnabled: true
+    isInstalled: false
+    isEnabled: false
     settings:
       pluginNameOverride: null
 sections:
@@ -121,15 +66,7 @@ sections:
     maxLevels: null
     enableVersioning: '1'
     locales:
-      en:
-        enabledByDefault: '1'
-        urlFormat: __home__
-        nestedUrlFormat: null
-      en_au:
-        enabledByDefault: '1'
-        urlFormat: __home__
-        nestedUrlFormat: null
-      en_ca:
+      en_us:
         enabledByDefault: '1'
         urlFormat: __home__
         nestedUrlFormat: null
@@ -143,9 +80,6 @@ sections:
           tabs:
             Content:
               body: '1'
-              image: '0'
-            SEO:
-              seomatic: '0'
   news:
     name: News
     type: channel
@@ -154,17 +88,9 @@ sections:
     maxLevels: null
     enableVersioning: '1'
     locales:
-      en:
+      en_us:
         enabledByDefault: '1'
-        urlFormat: 'news/{slug}'
-        nestedUrlFormat: null
-      en_au:
-        enabledByDefault: '1'
-        urlFormat: 'news/{slug}'
-        nestedUrlFormat: null
-      en_gb:
-        enabledByDefault: '1'
-        urlFormat: 'news/{slug}'
+        urlFormat: 'news/{postDate.year}/{slug}'
         nestedUrlFormat: null
     entryTypes:
       news:
@@ -177,8 +103,6 @@ sections:
             Content:
               body: '1'
               tags: '0'
-            SEO:
-              seomatic: '0'
 userGroups: {  }
 users:
   fieldLayout:
