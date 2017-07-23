@@ -1,11 +1,11 @@
-@mixin farts() {
+@mixin test() {
   background-color: #fff;
 }
 
 .test {
-  @include farts;
+  @include test;
 }
 
 body {
-  font-size: 20px;
+  font-size: 16px;
 }
