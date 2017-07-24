@@ -50,17 +50,24 @@ services:
   npm:
     build:
       context: .docker/npm
+    command: ["run", "watch"]
+    depends_on:
+      - http
+    links:
+      - http:${COMPOSE_PROJECT_NAME}.localhost
     env_file: .env
     networks:
+      public:
       private:
+    ports:
+      - "3000:3000"
+      - "3001:3001"
     volumes:
       - .:/usr/src/app
 
 networks:
   public:
-    driver: overlay
   private:
-    driver: overlay
 
 volumes:
   db:

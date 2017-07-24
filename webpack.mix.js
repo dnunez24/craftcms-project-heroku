@@ -11,12 +11,23 @@ mix.setPublicPath('public')
   .js('src/assets/scripts/main.js', 'public/scripts')
   .sourceMaps()
   .copy('src/assets/fonts', 'public/fonts')
-  .copy('src/assets/images', 'public/images');
+  .copy('src/assets/images', 'public/images')
+  .version();
 
 if (!mix.inProduction()) {
-  mix.browserSync(process.env.CRAFT_SITEURL);
-}
-
-if (mix.inProduction()) {
-  mix.version();
+  mix.browserSync({
+    open: false,
+    proxy: 'http',
+    files: [
+      'public/images/**/*',
+      'public/fonts/**/*',
+      'public/scripts/**/*.js',
+      'public/styles/**/*.css',
+    ],
+    watchEvents: [
+      'change',
+      'add',
+      'unlink',
+    ],
+  });
 }

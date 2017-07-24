@@ -7,3 +7,6 @@ WORKDIR /usr/src/app
 ENTRYPOINT ["npm"]
 
 CMD ["install"]
+
+EXPOSE 3000
+EXPOSE 3001

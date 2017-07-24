@@ -1,11 +1,4 @@
-@mixin test() {
-  background-color: #fff;
-}
-
-.test {
-  @include test;
-}
-
 body {
+  background-color: #fff;
   font-size: 16px;
 }
